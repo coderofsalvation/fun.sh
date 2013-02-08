@@ -83,8 +83,6 @@ lambda() {
             y="args"
         fi 
     done
-#	echo "lamdba : " $lam
-	#echo "params : " $@ 
     if [[ "$y" = "stdin" ]]; then
         read fun
         eval $(lam "$@ : $fun")

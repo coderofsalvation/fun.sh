@@ -1,11 +1,56 @@
 #!/bin/bash
 
-foldl() {
+fold() {
     f="$@"
-    read acc
-    while read elem; do
+	read acc
+	while read elem; do
         acc="$(printf "$acc\n$elem" | $f)"
     done
     echo $acc
 }
 
+list() {
+    for i in "$@"; do
+		echo "$i"
+    done
+}
+
+rlist() {
+	i="$#"
+	while [ $i -gt 0 ]; do
+  		eval "f=\${$i}"
+  		echo "$f "
+  		i=$((i-1))
+	done
+}
+
+lambda() {
+    lam() {
+        unset last 
+        
+        for last; do
+            shift
+            if [[ $last = ":" || $last = "->" ]]; then
+                echo "$@"
+                return
+            else
+                echo "read $last;"
+            fi
+        done
+    }
+    y="stdin"
+    for i in "$@"; do
+        if [[ $i = ":" || $i = "->" ]]; then
+            y="args"
+        fi
+    done
+    if [[ "$y" = "stdin" ]]; then
+        read funct
+        eval $(lam "$@ : $funct")
+    else
+        eval $(lam "$@")
+    fi
+    unset y
+    unset i
+    unset funct 
+}

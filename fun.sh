@@ -1,7 +1,7 @@
-#!/bin/zsh
+#!/bin/bash
 
 print() { 
-    echo -n "$@" 
+    echo "$@" 
 }
 
 cons() {
@@ -49,16 +49,16 @@ foldl() {
     f="$@"
     read acc
     while read elem; do
-        acc="$(echo "$acc\n$elem" | $f)"
+        acc="$(printf "$acc\n$elem" | $f)"
     done
-    echo "$acc"
+    echo $acc
 }
 
 scanl() {
     f="$@"
     read acc
     while read elem; do
-        acc="$(echo "$acc\n$elem" | $f)"
+        acc="$(printf "$acc\n$elem" | $f)"
         echo "$acc"
     done
 }
@@ -82,7 +82,9 @@ lambda() {
         if [[ $i = "." || $i = ":" || $i = "->" || $i = "→" ]]; then 
             y="args"
         fi 
-    done 
+    done
+#	echo "lamdba : " $lam
+	#echo "params : " $@ 
     if [[ "$y" = "stdin" ]]; then
         read fun
         eval $(lam "$@ : $fun")
@@ -94,8 +96,6 @@ lambda() {
     unset fun 
 }
 
-alias -g 'λ'="lambda "
-
 append() {
     lines $@
     while read xs; do
@@ -104,7 +104,7 @@ append() {
 }
 
 sum() { 
-    foldl λ a b . 'echo $(($a + $b))' 
+       foldl lambda a b : 'echo $(($a + $b))' 
 }
 
 product() { 

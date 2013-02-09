@@ -1,10 +1,10 @@
 #!/bin/bash
 
 fold() {
-    f="$@"
+    funct="$@"
 	read acc
 	while read elem; do
-        acc="$(printf "$acc\n$elem" | $f)"
+        acc="$(printf "%d$acc\n$elem" | $funct)"
     done
     echo $acc
 }
@@ -30,7 +30,7 @@ lambda() {
         
         for last; do
             shift
-            if [[ $last = ":" || $last = "->" ]]; then
+            if [[ $last = ":" ]]; then
                 echo "$@"
                 return
             else
@@ -40,7 +40,7 @@ lambda() {
     }
     y="stdin"
     for i in "$@"; do
-        if [[ $i = ":" || $i = "->" ]]; then
+        if [[ $i = ":" ]]; then
             y="args"
         fi
     done

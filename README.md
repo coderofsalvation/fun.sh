@@ -20,7 +20,7 @@ The fold function reduces a list (or other structure) to a single value by "fold
 eg.,
 ```bash
 list {1..3} | fold lambda a b : 'echo $(($a + $b))'
-```bash
+```
 result:
 ```bash
 6
@@ -39,9 +39,7 @@ result:
 1
 2
 3
-```bash
-
-
+```
 
 rlist(var..)
 
@@ -70,6 +68,7 @@ result:
 ```bash
 0
 ```
+eg.,
 ```bash
 strcmp 'hello' hello'
 ```

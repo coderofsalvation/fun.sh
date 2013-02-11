@@ -1,9 +1,9 @@
 #fbash.sh: Functional /bin/bash.
 Functional bash scripting. Forked from https://github.com/mikeplus64/fun.sh
 
-Functions:
+<h2>Functions:</h2>
 
-lambda (var.., function)
+<h3>lambda (var.., function)</h3>
 
 The lambda function represents an anonymous function. The lambda function is used as a predicate for other functions.
 
@@ -13,7 +13,7 @@ eg.,
 lambda a b : 'echo $(($a - $b))'
 ```
 
-fold (function, list)
+<h3>fold (function, list)</h3>
 
 The fold function reduces a list (or other structure) to a single value by "folding" a binary operator (function) between successive elements of the list.
 
@@ -26,7 +26,7 @@ result:
 6
 ```
 
-list(var..)
+<h3>list(var..)</h3>
 
 The list function prints each element to a new line in order.
 
@@ -41,7 +41,7 @@ result:
 3
 ```
 
-rlist(var..)
+<h3>rlist(var..)</h3>
 
 The reverse list function prints each element to a new line in reverse order.
 
@@ -56,7 +56,7 @@ result:
 1
 ```
 
-strcmp(stringA, stringB)
+<h3>strcmp(stringA, stringB)</h3>
 
 The strcmp function compares two strings, returning 1 for a match and 0 for no match.
 
@@ -78,7 +78,7 @@ result:
 ```
 
 
-filter(function, list)
+<h3>filter(function, list)</h3>
 
 The filter function compares elements in a list using a given function, in ascending order. A new list is returned containing only list elements that satify the function.
 
@@ -91,7 +91,7 @@ result:
 hello
 ```
 
-match(function, list)
+<h3>match(function, list)</h3>
 
 The match function compares elements in a list using a given function, in ascending order. The first matching element is returned and if no match then nothing is returned.
 
@@ -104,7 +104,7 @@ result:
 world
 ```
 
-position(function, list)
+<h3>position(function, list)</h3>
 
 The position function compares elements in a list using a given function, in ascending order. The position of the first matching element is returned. Initial position is 0. Nothing is returned for no match.
 

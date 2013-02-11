@@ -24,6 +24,51 @@ rlist() {
 	done
 }
 
+strcomp() {
+	if [ "$1" == "$2" ]; then
+		echo 1
+	else
+		echo 0
+	fi
+}
+
+filter() {
+	funct="$@"
+    resp=
+	while read elem; do
+		acc="$(printf "${elem}" | $funct)"
+		if [ $acc -eq 1 ]; then
+			resp+=" $elem"
+		fi	
+	done
+	echo $resp	
+}
+
+match() {
+	funct="$@"
+    while read elem; do
+        acc="$(printf "${elem}" | $funct)"
+        if [ $acc -eq 1 ]; then
+            echo $elem
+			break
+        fi
+    done
+ 	return 0
+}
+
+position() {
+	funct="$@"
+    pos=0
+	while read elem; do
+        acc="$(printf "${elem}" | $funct)"
+        if [ $acc -eq 1 ]; then
+            echo $pos
+			break
+        fi
+		pos=$((pos+1))
+    done
+}
+
 lambda() {
     lam() {
         unset last 

@@ -70,7 +70,7 @@ result:
 ```
 eg.,
 ```bash
-strcmp 'hello' hello'
+strcmp 'hello' 'hello'
 ```
 result:
 ```bash

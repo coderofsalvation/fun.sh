@@ -1,18 +1,18 @@
 #!/bin/bash
 
 fold() {
-    funct="$@"
+	funct="$@"
 	read acc
 	while read elem; do
-        acc="$(printf "%d$acc\n$elem" | $funct)"
-    done
-    echo $acc
+		acc="$(printf "%d$acc\n$elem" | $funct)"
+	done
+	echo $acc
 }
 
 list() {
-    for i in "$@"; do
+	for i in "$@"; do
 		echo "$i"
-    done
+	done
 }
 
 rlist() {
@@ -34,7 +34,7 @@ strcomp() {
 
 filter() {
 	funct="$@"
-    resp=
+	resp=
 	while read elem; do
 		acc="$(printf "${elem}" | $funct)"
 		if [ $acc -eq 1 ]; then
@@ -46,27 +46,26 @@ filter() {
 
 match() {
 	funct="$@"
-    while read elem; do
-        acc="$(printf "${elem}" | $funct)"
-        if [ $acc -eq 1 ]; then
-            echo $elem
+	while read elem; do
+		acc="$(printf "${elem}" | $funct)"
+		if [ $acc -eq 1 ]; then
+			echo $elem
 			break
-        fi
-    done
- 	return 0
+		fi
+	done
 }
 
 position() {
 	funct="$@"
-    pos=0
+	pos=0
 	while read elem; do
-        acc="$(printf "${elem}" | $funct)"
-        if [ $acc -eq 1 ]; then
-            echo $pos
+		acc="$(printf "${elem}" | $funct)"
+		if [ $acc -eq 1 ]; then
+			echo $pos
 			break
-        fi
+		fi
 		pos=$((pos+1))
-    done
+	done
 }
 
 lambda() {

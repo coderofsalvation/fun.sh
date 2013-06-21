@@ -116,3 +116,19 @@ result:
 ```bash
 0
 ```
+
+<h3>partial(result_function, function, args...)</h3>
+
+Partially apply `function` to `args`, store the resulting function in `result_function`.
+
+```bash
+add() {
+    expr $1 + $2
+}
+partial adder3 add 3
+adder3 6
+```
+result:
+```bash
+9
+```

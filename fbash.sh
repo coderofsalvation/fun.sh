@@ -39,9 +39,9 @@ filter() {
 		acc="$(printf "${elem}" | $funct)"
 		if [ $acc -eq 1 ]; then
 			resp+=" $elem"
-		fi	
+		fi
 	done
-	echo $resp	
+	echo $resp
 }
 
 match() {
@@ -70,8 +70,8 @@ position() {
 
 lambda() {
     lam() {
-        unset last 
-        
+        unset last
+
         for last; do
             shift
             if [[ $last = ":" ]]; then
@@ -96,5 +96,5 @@ lambda() {
     fi
     unset y
     unset i
-    unset funct 
+    unset funct
 }

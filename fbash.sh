@@ -103,9 +103,19 @@ partial() {
     exportfun=$1; shift
     fun=$1; shift
     params=$*
-    cmd=$"function $exportfun() {
+    cmd=$"$exportfun() {
         more_params=\$*;
         $fun $params \$more_params;
     }"
+    eval $cmd
+}
+
+compose() {
+    exportfun=$1; shift
+    f1=$1; shift
+    f2=$1; shift
+    cmd=$"$exportfun() {
+              $f1 \$($f2 \$*);
+          }"
     eval $cmd
 }

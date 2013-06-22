@@ -132,3 +132,22 @@ result:
 ```bash
 9
 ```
+
+<h3>compose(result_function, outer_function, inner_function)</h3>
+
+Compose functions. Remember: `(outer o inner)(x) = outer(inner(x))`
+
+```bash
+add() {
+    expr $1 + $2
+}
+square() {
+    expr $1 \* $1
+}
+compose square_of_sum square add
+square_of_sum 2 3
+```
+rersult:
+```bash
+25
+```
